@@ -1,3 +1,7 @@
+# Geocode
+
+Geocode is an application that help you to locate the nearest charging point for your electric car and also give you the possibility to make reservation
+
 # harmonia_p3
 
 This project uses Harmonia. Harmonia is a framework meant to serve as a foundation for every project following the React-Express-MySQL stack, as learned in Wild Code School.
