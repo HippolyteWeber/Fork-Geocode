@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import "./leaflet.css";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import { toast } from "react-toastify";
 import axios from "axios";

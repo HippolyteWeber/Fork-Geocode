@@ -12,7 +12,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <main className="bg-bg-geocode min-h-screen">
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -27,7 +27,7 @@ function App() {
         transition={Bounce}
       />
       <Outlet context={{ currentUser, setCurrentUser }} />
-    </>
+    </main>
   );
 }
 

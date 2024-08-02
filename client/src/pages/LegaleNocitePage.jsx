@@ -4,11 +4,11 @@ export default function LegaleNoticePage() {
   return (
     <>
       <Navbar />
-      <div className=" bg-bg-geocode text-white py-12 px-40 pb-32">
+      <div className=" bg-bg-geocode text-white py-12 px-4 md:px-40 pb-32 ">
         <h1 className="text-4xl"> Conditions Générales d'Utilisation</h1>
         <br />
         <br />
-        <p className="text-2xl">
+        <p className="text-2xl ">
           En accédant et en utilisant le site Geocode, vous acceptez de
           respecter les conditions générales d'utilisation suivantes :
         </p>

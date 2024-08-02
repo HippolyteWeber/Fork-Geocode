@@ -17,8 +17,8 @@ const parseStations = () => {
   // Database connection configuration
   const dbConfig = {
     host: "localhost",
-    user: "pierre",
-    password: "Syusuke1989@",
+    user: "Hargot",
+    password: "Hargot2024k!",
     database: "geocode",
   };
 

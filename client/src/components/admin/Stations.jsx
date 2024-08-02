@@ -1,10 +1,26 @@
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { useState, useEffect } from "react";
 import SideBar from "./SideBar";
 import NavbarDesktop from "../NavbarDesktop";
+import LoadingComponent from "../map/LoadingComponent";
 
 function Stations() {
   const [stations, setStations] = useState([]);
   const [visibleStations, setVisibleStations] = useState(20);
+  const { currentUser } = useOutletContext();
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+      if (currentUser?.role !== "Admin") {
+        navigate("/map");
+      }
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, [currentUser, navigate]);
 
   const fetchStations = () => {
     fetch(`${import.meta.env.VITE_API_URL}/api/station`)
@@ -31,10 +47,13 @@ function Stations() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  if (loading) {
+    return <LoadingComponent />;
+  }
   return (
     <>
       <NavbarDesktop />
-      <div className="pl-60 pr-4 pt-4 min-h-screen flex items-center justify-center bg-black">
+      <div className="pl-60 pr-4 pt-4 min-h-screen flex items-center justify-center ">
         <SideBar />
         <table className="table-auto w-full text-white bg-GreenComp">
           <thead>

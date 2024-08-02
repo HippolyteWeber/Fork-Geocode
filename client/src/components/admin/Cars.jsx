@@ -20,7 +20,7 @@ function Cars() {
   return (
     <>
       <NavbarDesktop />
-      <div className="pl-80 pr-4 pt-4 min-h-screen flex items-center justify-center bg-black text-black">
+      <div className="pl-80 pr-4 pt-4 min-h-screen flex items-center justify-center  text-black">
         <SideBar />
         <div className="grid grid-cols-3 gap-5">
           {cars.map((car) => (

@@ -1,8 +1,20 @@
-import { NavLink } from "react-router-dom";
+import { Link, Navigate, useOutletContext } from "react-router-dom";
+import { useEffect } from "react";
 import admin from "../../assets/images/admin.png";
 import logo from "../../assets/images/Logo.png";
+import handleLogout from "../../lib/logout";
 
 function SideBar() {
+  const { currentUser } = useOutletContext();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (currentUser?.role !== "Admin") {
+        Navigate("/");
+      }
+    }, 200);
+    return () => clearTimeout(timer);
+  });
+  const { setCurrentUser } = useOutletContext();
   return (
     <div className="text-white fixed h-full top-0 left-0">
       <div className="mt-28 mb-40 bg-GreenComp p-8 rounded-tr-large rounded-br-srounded">
@@ -17,46 +29,49 @@ function SideBar() {
               />
             </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <NavLink to="/cars" className="w-full">
-              <button
-                type="button"
-                className="w-full rounded-lg border border-white py-2 px-4"
+          <ul className="text-center gap-4">
+            <li className="flex items-center space-x-2 py-2">
+              <Link
+                to="/admin/cars"
+                className="w-full rounded-lg border border-white py-2 px-4 hover:border-black hover:text-black"
               >
                 Voitures
-              </button>
-            </NavLink>
-          </div>
-          <div className="flex items-center space-x-2">
-            <NavLink to="/registeredusers" className="w-full">
-              <button
-                type="button"
-                className="w-full rounded-lg border border-white py-2 px-4"
+              </Link>
+            </li>
+            <li className="flex items-center space-x-2 py-2">
+              <Link
+                to="/admin/registeredusers"
+                className="w-full rounded-lg border border-white py-2 px-4  hover:border-black hover:text-black"
               >
                 Utilisateurs
-              </button>
-            </NavLink>
-          </div>
-          <div className="flex items-center space-x-2">
-            <NavLink to="/admin" className="w-full">
-              <button
-                type="button"
-                className="w-full rounded-lg border border-white py-2 px-4"
+              </Link>
+            </li>
+            <li className="flex items-center space-x-2 py-2">
+              <Link
+                to="/admin"
+                className="w-full rounded-lg border border-white py-2 px-4  hover:border-black hover:text-black"
               >
-                Informations
-              </button>
-            </NavLink>
-          </div>
-          <div className="flex items-center space-x-2">
-            <NavLink to="/stations" className="w-full">
-              <button
-                type="button"
-                className="w-full rounded-lg border border-white py-2 px-4"
+                informations
+              </Link>
+            </li>
+            <li className="flex items-center space-x-2 py-2">
+              <Link
+                to="/admin/stations"
+                className="w-full rounded-lg border border-white py-2 px-4  hover:border-black hover:text-black"
               >
                 Stations
+              </Link>
+            </li>
+            <li className="flex items-center space-x-2 py-2">
+              <button
+                type="submit"
+                onClick={() => handleLogout(setCurrentUser)}
+                className="w-full rounded-lg border border-white py-2 px-4  hover:border-black hover:text-black"
+              >
+                Se déconnecter
               </button>
-            </NavLink>
-          </div>
+            </li>
+          </ul>
           <img
             src={logo}
             alt="logo geocode"

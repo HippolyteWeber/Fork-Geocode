@@ -59,9 +59,21 @@ export default function UploadComponent() {
   return (
     <div className="text-xs w-40">
       <form className="p-4 max-w flex flex-col" onSubmit={handleSubmit}>
-        <input type="file" accept=".csv" onChange={handleFileChange} />
+        <input
+          type="file"
+          accept=".csv"
+          id="file"
+          onChange={handleFileChange}
+          className="hidden"
+        />
+        <label
+          htmlFor="file"
+          className="text-white bg-GreenComp py-1 rounded-sm hover:bg-green-400 hover:text-black hover:cursor-pointer"
+        >
+          sélectionner votre fichier
+        </label>
         <button
-          className={`bg-GreenComp rounded-sm p-1 mt-2 ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+          className={`bg-GreenComp rounded-sm p-1 mt-2 ${loading ? "opacity-50 cursor-not-allowed" : ""} hover:bg-green-400 hover:text-black`}
           type="submit"
           disabled={loading}
         >

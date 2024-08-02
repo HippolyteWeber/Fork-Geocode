@@ -22,7 +22,7 @@ function RegisteredUsers() {
   return (
     <>
       <NavbarDesktop />
-      <div className="pl-60 pr-4 pt-4 min-h-screen flex flex-col items-center bg-black">
+      <div className="pl-60 pr-4 pt-4 min-h-screen flex flex-col items-center ">
         <SideBar />
         <table className="table-auto w-full text-white bg-GreenComp mt-4">
           <thead>

@@ -17,26 +17,32 @@ export default function NavbarDesktop() {
           <Link to="/map">
             <li className="flex flex-col items-center">
               <Send color="#ffffff" size={30} strokeWidth={1} />
-              <span className="text-white font-paraph text-xl">Carte</span>
+              <span className="text-white font-paraph text-xl hover:text-black">
+                Carte
+              </span>
             </li>
           </Link>
-          <Link to="/profil">
+          <Link to="/admin">
             <li className="flex flex-col items-center">
               <User color="#ffffff" size={30} strokeWidth={1} />
-              <span className="text-white font-paraph text-xl">Profil</span>
+              <span className="text-white font-paraph text-xl hover:text-black">
+                Admin dashboard
+              </span>
             </li>
           </Link>
 
           <Link to="/contact">
             <li className="flex flex-col items-center">
               <ReceiptText color="#ffffff" size={30} strokeWidth={1} />
-              <span className="text-white font-paraph text-xl">Contact</span>
+              <span className="text-white font-paraph text-xl hover:text-black">
+                Contact
+              </span>
             </li>
           </Link>
           <Link to="/rgpd">
             <li className="flex flex-col items-center">
               <ShieldEllipsis color="#ffffff" size={30} strokeWidth={1} />
-              <span className="text-white  font-paraph text-xl">
+              <span className="text-white  font-paraph text-xl hover:text-black">
                 Mentions légales
               </span>
             </li>

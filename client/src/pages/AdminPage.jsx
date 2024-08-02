@@ -97,7 +97,7 @@ function AdminPage() {
       <NavbarDesktop />
       <div className="bg-bg-geocode h-screen flex text-white">
         <SideBar />
-        <div className="flex-grow bg-black flex justify-center items-center pb-20">
+        <div className="flex-grow  flex justify-center items-center pb-20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {totalReservations !== null && (
               <div

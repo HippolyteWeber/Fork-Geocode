@@ -10,6 +10,7 @@ module.exports = {
         GreyComp: "#333939",
         SoftDark: "#242424",
         GreenBlue: "#21A89A",
+        Componentbg: "#333939",
       },
       fontFamily: {
         main: ['"Alata"', "sans-serif"],
@@ -19,12 +20,12 @@ module.exports = {
         "3xl": "80px 80px 10px 0",
       },
       borderRadius: {
-        'large': '90px', 
-        'srounded': '10px', 
+        large: "90px",
+        srounded: "10px",
       },
       backgroundImage: {
-        'bg-geocode': "url('/src/assets/images/bggeocode.png')",
-      }
+        "bg-geocode": "url('/src/assets/images/bg_bggenerator_com.png')",
+      },
     },
   },
   plugins: [daisyui],
