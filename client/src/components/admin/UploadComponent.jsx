@@ -56,6 +56,15 @@ export default function UploadComponent() {
     }, 25000);
   };
 
+  const handleTruncate = async () => {
+    try {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/station/truncate`);
+      toast.success("Table station vidée avec succès !");
+    } catch (error) {
+      toast.error("Erreur lors de la suppression de la table station", {});
+    }
+  };
+
   return (
     <div className="text-xs w-40">
       <form className="p-4 max-w flex flex-col" onSubmit={handleSubmit}>
@@ -70,7 +79,7 @@ export default function UploadComponent() {
           htmlFor="file"
           className="text-white bg-GreenComp py-1 rounded-sm hover:bg-green-400 hover:text-black hover:cursor-pointer"
         >
-          sélectionner votre fichier
+          Sélectionner votre fichier
         </label>
         <button
           className={`bg-GreenComp rounded-sm p-1 mt-2 ${loading ? "opacity-50 cursor-not-allowed" : ""} hover:bg-green-400 hover:text-black`}
@@ -78,6 +87,14 @@ export default function UploadComponent() {
           disabled={loading}
         >
           Télécharger
+        </button>
+        <button
+          type="button"
+          onClick={handleTruncate}
+          className="mt-2 p-1 rounded-sm bg-red-600 text-white hover:bg-red-700 hover:cursor-text-black"
+          aria-label="Supprimer la table station"
+        >
+          Vider les stations
         </button>
       </form>
     </div>

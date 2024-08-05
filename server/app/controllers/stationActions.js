@@ -59,10 +59,20 @@ const destroy = async (req, res, next) => {
   }
 };
 
+const truncateStationTable = async (req, res, next) => {
+  try {
+    await tables.station.truncateStationTable();
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   create,
   readAll,
   readOneById,
   update,
   destroy,
+  truncateStationTable,
 };

@@ -138,6 +138,11 @@ class StationRepository extends AbstractRepository {
     );
     return result.affectedRows > 0;
   }
+
+  async truncateStationTable() {
+    const [result] = await this.database.query(`DELETE FROM ${this.table}`);
+    return result.affectedRows > 0;
+  }
 }
 
 module.exports = StationRepository;

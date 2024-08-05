@@ -13,6 +13,7 @@ const {
   readOneById,
   update,
   destroy,
+  truncateStationTable,
 } = require("../../../controllers/stationActions");
 
 router.post("/", create);
@@ -20,6 +21,7 @@ router.get("/", readAll);
 router.get("/:id", readOneById);
 router.put("/:id", update);
 router.delete("/:id", destroy);
+router.post("/truncate", truncateStationTable);
 
 /* ************************************************************************* */
 
