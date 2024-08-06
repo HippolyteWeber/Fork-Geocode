@@ -30,7 +30,7 @@ CREATE TABLE users (
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL, 
+    password VARCHAR(255) NOT NULL,
     role_id INT UNSIGNED,
     FOREIGN KEY (role_id) REFERENCES role (role_id),
     car_type_id INT UNSIGNED,
@@ -49,7 +49,7 @@ CREATE TABLE reservation (
     FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE
 );
 
-INSERT INTO role (role) VALUES 
+INSERT INTO role (role) VALUES
 ('Admin'),
 ('User');
 
@@ -60,4 +60,4 @@ BEGIN
     IF NEW.role_id IS NULL THEN
         SET NEW.role_id = (SELECT role_id FROM Role WHERE role = 'User');
     END IF;
-END 
+END
