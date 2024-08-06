@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { SquareX } from "lucide-react";
+import { SquareX, Trash2 } from "lucide-react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import SideBar from "./SideBar";
@@ -41,7 +41,9 @@ function RegisteredUsers() {
         <table className="table-auto w-full text-white bg-GreenComp mt-4">
           <thead>
             <tr>
-              <th className="border px-4 py-2">Actions</th>
+              <th className="flex justify-center  border py-2">
+                <Trash2 label="icon" />
+              </th>
               <th className="border px-4 py-2">Prénom</th>
               <th className="border px-4 py-2">Nom</th>
               <th className="border px-4 py-2">Email</th>
