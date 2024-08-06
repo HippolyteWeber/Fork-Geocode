@@ -41,7 +41,7 @@ function RegisteredUsers() {
         <table className="table-auto w-full text-white bg-GreenComp mt-4">
           <thead>
             <tr>
-              <th className="flex justify-center  border py-2">
+              <th className="flex justify-center border py-2">
                 <Trash2 label="icon" />
               </th>
               <th className="border px-4 py-2">Prénom</th>
