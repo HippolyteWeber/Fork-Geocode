@@ -15,15 +15,15 @@ class ReservationSeeder extends AbstractSeeder {
 
       const fakeReservation = {
         status: this.faker.helpers.arrayElement([
-          "confirmé",
-          "en attente",
+          "Confirmé",
+          "En attente",
           "Annulé",
         ]),
         price: this.faker.finance.amount(10, 500, 2),
-        start_at: this.faker.date.soon(5),
-        end_at: this.faker.date.soon(10),
+        start_at: this.faker.date.soon({ days: 5 }),
+        end_at: this.faker.date.soon({ days: 10 }),
         user_id: userRef.insertId,
-        station_id: this.faker.datatype.number({ min: 1, max: 100 }),
+        station_id: this.faker.number.int({ min: 1, max: 100 }),
       };
 
       this.insert(fakeReservation);

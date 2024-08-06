@@ -15,7 +15,7 @@ import MapPage from "./pages/MapPage";
 import ContactPage from "./pages/ContactPage";
 import Cars from "./components/admin/Cars";
 import Stations from "./components/admin/Stations";
-import UserProfilPage from "./pages/UserProfilPage";
+import UserProfilePage from "./pages/UserProfilePage";
 import RegisteredUsers from "./components/admin/RegisteredUsers";
 import AdminPage from "./pages/AdminPage";
 import LegaleNoticePage from "./pages/LegaleNocitePage";
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/profil",
-        element: <UserProfilPage />,
+        element: <UserProfilePage />,
       },
       {
         path: "/admin/registeredusers",
