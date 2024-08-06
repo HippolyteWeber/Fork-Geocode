@@ -1,6 +1,6 @@
 # Geocode
 
-**Geocode** is an application that help you to locate the nearest charging point for your electric car and also give you the possibility to make reservations for the station(s) of your choice.
+**Geocode** is an application that help you to locate the nearest charging point for your electric car and also give you the possibility to make reservations for the station(s) of your choice using an interactive map.
 
 ## harmonia_p3
 
