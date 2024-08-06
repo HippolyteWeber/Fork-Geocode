@@ -1,16 +1,21 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 import SideBar from "./SideBar";
-
 import NavbarDesktop from "../NavbarDesktop";
 
 function Cars() {
   const [cars, setCars] = useState([]);
 
-  const fetchCars = () => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/car`)
-      .then((response) => response.json())
-      .then((data) => setCars(data))
-      .catch((error) => console.error("Error fetching cars:", error));
+  const fetchCars = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/car`
+      );
+      setCars(response.data);
+    } catch (error) {
+      toast.error("Erreur lors de la récupération des voitures.");
+    }
   };
 
   useEffect(() => {
@@ -20,7 +25,7 @@ function Cars() {
   return (
     <>
       <NavbarDesktop />
-      <div className="pl-80 pr-4 pt-4 min-h-screen flex items-center justify-center  text-black">
+      <div className="pl-80 pr-4 pt-4 min-h-screen flex items-center justify-center text-black">
         <SideBar />
         <div className="grid grid-cols-3 gap-5">
           {cars.map((car) => (
