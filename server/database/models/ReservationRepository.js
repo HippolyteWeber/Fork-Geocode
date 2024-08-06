@@ -29,6 +29,7 @@ class ReservationRepository extends AbstractRepository {
         u.first_name,
         u.last_name,
         s.station_id,
+        s.name,
         r.status,
         r.price,
         r.start_at,
