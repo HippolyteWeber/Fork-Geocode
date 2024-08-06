@@ -31,6 +31,7 @@ function RegisteredUsers() {
               <th className="border px-4 py-2">Nom</th>
               <th className="border px-4 py-2">Email</th>
               <th className="border px-4 py-2">Rôle</th>
+              <th className="border px-4 py-2">id</th>
             </tr>
           </thead>
           <tbody>
@@ -40,6 +41,7 @@ function RegisteredUsers() {
                 <td className="border px-4 py-2">{user.last_name}</td>
                 <td className="border px-4 py-2">{user.email}</td>
                 <td className="border px-4 py-2">{user.role_id}</td>
+                <td className="border px-4 py-2">{user.user_id}</td>
               </tr>
             ))}
           </tbody>
