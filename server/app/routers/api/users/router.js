@@ -14,6 +14,7 @@ const {
   updateCar,
   update,
   destroy,
+  updateUser,
 } = require("../../../controllers/usersActions");
 
 const hashPassword = require("../../../services/hashpassword");
@@ -21,6 +22,8 @@ const hashPassword = require("../../../services/hashpassword");
 const validateUserSchema = require("../../../middleware/ValidateUserSchema");
 
 const checkExistingUser = require("../../../middleware/CheckExistingUser");
+
+const validateUserUpdate = require("../../../middleware/ValidateUserUpdate");
 
 // Route to add a new user
 router.post("/", validateUserSchema, checkExistingUser, hashPassword, create);
@@ -32,6 +35,8 @@ router.get("/:id", readOneById);
 router.put("/", updateCar);
 // Route to update a specific user by ID
 router.put("/:id", validateUserSchema, hashPassword, update);
+// Route to update for User by ID
+router.put("/update/:id", validateUserUpdate, updateUser);
 // Route to delete a specific user by ID
 router.delete("/:id", destroy);
 /* ************************************************************************* */

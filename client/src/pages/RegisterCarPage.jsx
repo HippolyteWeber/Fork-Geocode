@@ -62,7 +62,7 @@ function RegisterCarPage() {
         </div>
         {cars.map((car, index) => (
           <div
-            key={car.id}
+            key={car.car_type_id}
             className={`bg-gradient-to-b from-gray-300 to-white rounded-lg overflow-hidden shadow-xl border-GreenComp ${
               selectedCarIndex === index ? "border-8" : ""
             } flex flex-col ${selectedCarIndex === index ? "border-8" : ""}`}
@@ -76,7 +76,6 @@ function RegisterCarPage() {
               <div>
                 <h2 className="text-xl font-bold mb-2">{car.brand}</h2>
                 <p className="text-sm mb-2">{car.model}</p>
-                <p className="text-sm">{car.type}</p>
                 <p className="text-sm">Type de prise : {car.socket_type} 🔌 </p>
               </div>
               <button
