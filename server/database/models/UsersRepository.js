@@ -40,6 +40,16 @@ class UsersRepository extends AbstractRepository {
     return result.affectedRows > 0;
   }
 
+  async updateUser(id, user) {
+    const { firstName, lastName, email } = user;
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} SET first_name = ?, last_name = ?, email = ? WHERE user_id = ?`,
+      [firstName, lastName, email, id]
+    );
+
+    return result.affectedRows > 0;
+  }
+
   async updateCar(user) {
     const { carTypeId, userId } = user;
     const [result] = await this.database.query(

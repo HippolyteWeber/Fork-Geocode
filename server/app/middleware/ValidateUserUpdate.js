@@ -1,8 +1,5 @@
-const { z } = require("zod");
 const xss = require("xss");
-
-const userRegex =
-  /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,32}$/;
+const { z } = require("zod");
 
 const userSchema = z.object({
   firstName: z
@@ -28,25 +25,20 @@ const userSchema = z.object({
   email: z.string().email({
     invalid_type_error: "Votre email est invalide",
   }),
-  password: z.string().regex(userRegex, {
-    message:
-      "Votre mot de passe doit contenir au minimun 1 chiffre, 1 majuscule, 1 minuscule, un caractère spéciale et faire entre 8 et 32 caractères",
-  }),
 });
 
-const validateUserSchema = (req, res, next) => {
-  const { firstName, lastName, email, password } = req.body;
+const validateUserUpdate = (req, res, next) => {
+  const { firstName, lastName, email } = req.body;
+
+  req.body.firstName = xss(req.body.firstName);
+  req.body.lastName = xss(req.body.lastName);
+  req.body.email = xss(req.body.email);
 
   const validate = userSchema.safeParse({
     firstName,
     lastName,
     email,
-    password,
   });
-  req.body.firstName = xss(req.body.firstName);
-  req.body.lastName = xss(req.body.lastName);
-  req.body.email = xss(req.body.email);
-  req.body.password = xss(req.body.password);
 
   if (!validate.success) {
     const errors = validate.error.issues.reduce((acc, issue) => {
@@ -58,4 +50,4 @@ const validateUserSchema = (req, res, next) => {
   return next();
 };
 
-module.exports = validateUserSchema;
+module.exports = validateUserUpdate;

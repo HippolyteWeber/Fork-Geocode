@@ -51,6 +51,21 @@ const update = async (req, res, next) => {
   }
 };
 
+const updateUser = async (req, res, next) => {
+  const user = req.body;
+
+  try {
+    const updated = await tables.users.updateUser(req.params.id, user);
+    if (updated) {
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (e) {
+    next(e);
+  }
+};
+
 const updateCar = async (req, res, next) => {
   const { carTypeId, userId } = req.body;
 
@@ -91,6 +106,7 @@ module.exports = {
   readAll,
   readOneById,
   update,
+  updateUser,
   updateCar,
   destroy,
 };
