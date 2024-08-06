@@ -51,7 +51,7 @@ function SideBar() {
                 to="/admin"
                 className="w-full rounded-lg border border-white py-2 px-4  hover:border-black hover:text-black"
               >
-                informations
+                Informations
               </Link>
             </li>
             <li className="flex items-center space-x-2 py-2">
