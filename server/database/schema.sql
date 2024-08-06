@@ -45,8 +45,8 @@ CREATE TABLE reservation (
     end_at DATETIME NOT NULL,
     user_id INT UNSIGNED NOT NULL,
     station_id INT UNSIGNED NOT NULL,
-    FOREIGN KEY (station_id) REFERENCES station (station_id),
-    FOREIGN KEY (user_id) REFERENCES users (user_id)
+    FOREIGN KEY (station_id) REFERENCES station (station_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE
 );
 
 INSERT INTO role (role) VALUES 

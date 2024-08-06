@@ -10,59 +10,59 @@ export default function StatisticDisplayAdmin() {
   const [totalUsers, setTotalUsers] = useState(null);
   const [totalStations, setTotalStations] = useState(null);
 
+  const fetchTotalReservations = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/reservation/`
+      );
+      const reservations = response.data;
+      const total = reservations.length;
+      setTotalReservations(total);
+    } catch (error) {
+      toast.error("Erreur lors de la récupération des réservations.");
+    }
+  };
+
+  const fetchTotalCars = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/car/`
+      );
+      const cars = response.data;
+      const total = cars.length;
+      setTotalCars(total);
+    } catch (error) {
+      toast.error("Erreur lors de la récupération des voitures.");
+    }
+  };
+
+  const fetchTotalUsers = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/users/`
+      );
+      const users = response.data;
+      const total = users.length;
+      setTotalUsers(total);
+    } catch (error) {
+      toast.error("Erreur lors de la récupération des utilisateurs.");
+    }
+  };
+
+  const fetchTotalStations = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/station/`
+      );
+      const stations = response.data;
+      const total = stations.length;
+      setTotalStations(total);
+    } catch (error) {
+      toast.error("Erreur lors de la récupération des stations.");
+    }
+  };
+
   useEffect(() => {
-    const fetchTotalReservations = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/reservation/`
-        );
-        const reservations = response.data;
-        const total = reservations.length;
-        setTotalReservations(total);
-      } catch (error) {
-        toast.error("Erreur lors de la récupération des réservations.");
-      }
-    };
-
-    const fetchTotalCars = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/car/`
-        );
-        const cars = response.data;
-        const total = cars.length;
-        setTotalCars(total);
-      } catch (error) {
-        toast.error("Erreur lors de la récupération des voitures.");
-      }
-    };
-
-    const fetchTotalUsers = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/users/`
-        );
-        const users = response.data;
-        const total = users.length;
-        setTotalUsers(total);
-      } catch (error) {
-        toast.error("Erreur lors de la récupération des utilisateurs.");
-      }
-    };
-
-    const fetchTotalStations = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/station/`
-        );
-        const stations = response.data;
-        const total = stations.length;
-        setTotalStations(total);
-      } catch (error) {
-        toast.error("Erreur lors de la récupération des stations.");
-      }
-    };
-
     fetchTotalReservations();
     fetchTotalCars();
     fetchTotalUsers();
