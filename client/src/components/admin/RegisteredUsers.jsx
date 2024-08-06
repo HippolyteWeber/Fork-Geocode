@@ -9,12 +9,14 @@ function RegisteredUsers() {
   const [users, setUsers] = useState([]);
 
   const fetchUsers = async () => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/users`)
-      .then((response) => response.json())
-      .then((data) => {
-        setUsers(data);
-      })
-      .catch((error) => console.error("Error fetching users:", error));
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/users`
+      );
+      setUsers(response.data);
+    } catch (error) {
+      toast.error("Erreur lors de la récupération des utilisateurs.");
+    }
   };
 
   const deleteUsers = async (usersId) => {
@@ -58,6 +60,7 @@ function RegisteredUsers() {
                     <button
                       aria-label="Supprimer un utilisateur"
                       type="button"
+                      className="hover:bg-red-200 rounded-sm"
                       onClick={() => deleteUsers(user.user_id)}
                     >
                       <SquareX color="red" />

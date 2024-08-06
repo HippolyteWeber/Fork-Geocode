@@ -1,5 +1,7 @@
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { useState, useEffect } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 import SideBar from "./SideBar";
 import NavbarDesktop from "../NavbarDesktop";
 import LoadingComponent from "../map/LoadingComponent";
@@ -22,11 +24,15 @@ function Stations() {
     return () => clearTimeout(timer);
   }, [currentUser, navigate]);
 
-  const fetchStations = () => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/station`)
-      .then((response) => response.json())
-      .then((data) => setStations(data))
-      .catch((error) => console.error("Error fetching stations:", error));
+  const fetchStations = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/station`
+      );
+      setStations(response.data);
+    } catch (error) {
+      toast.error("Erreur lors de la récupération des stations.");
+    }
   };
 
   useEffect(() => {
@@ -50,6 +56,7 @@ function Stations() {
   if (loading) {
     return <LoadingComponent />;
   }
+
   return (
     <>
       <NavbarDesktop />
