@@ -25,6 +25,7 @@ class ReservationRepository extends AbstractRepository {
   async readAll() {
     const [rows] = await this.database.query(
       `SELECT
+      r.reservation_id,
         u.user_id,
         u.first_name,
         u.last_name,

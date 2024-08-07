@@ -20,7 +20,7 @@ export default function Navbar() {
               <li className="flex flex-col items-center">
                 <User color="#ffffff" size={20} strokeWidth={1} />
                 <span className="text-white mt-2 font-paraph hover:text-black">
-                  connexion
+                  Connexion
                 </span>
               </li>
             </Link>

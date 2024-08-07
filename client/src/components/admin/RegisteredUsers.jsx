@@ -50,7 +50,6 @@ function RegisteredUsers() {
               <th className="border px-4 py-2">Nom</th>
               <th className="border px-4 py-2">Email</th>
               <th className="border px-4 py-2">Rôle</th>
-              <th className="border px-4 py-2">id</th>
             </tr>
           </thead>
           {users && (
