@@ -76,6 +76,7 @@ export default function MapComponent() {
         center={[47.27387, 2.70264]}
         zoom={6}
         className="w-full h-full"
+        minZoom={6}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
