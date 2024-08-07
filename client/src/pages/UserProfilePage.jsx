@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { SquarePen, User } from "lucide-react";
+import { SquarePen, User, CircleX } from "lucide-react";
 
 import LoadingComponent from "../components/map/LoadingComponent";
 import handleLogout from "../lib/logout";
@@ -25,7 +25,7 @@ export default function UserProfilePage() {
       );
       setUserInfo(response.data);
     } catch (e) {
-      toast.error("Utilisateur non existant", e);
+      toast.error("Utilisateur non existant");
     }
   };
 
@@ -50,25 +50,37 @@ export default function UserProfilePage() {
     }
   };
 
-  useEffect(() => {
-    const fetchReservation = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/reservation/`,
-          {
-            params: { userId: currentUser.user_id },
-          }
-        );
-        setReservations(
-          response.data.filter(
-            (reservation) => reservation.user_id === currentUser.user_id
-          )
-        );
-      } catch (e) {
-        toast.info("Réservation non existante", e);
-      }
-    };
+  const fetchReservation = useCallback(async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/reservation/`,
+        {
+          params: { userId: currentUser.user_id },
+        }
+      );
+      setReservations(
+        response.data.filter(
+          (reservation) => reservation.user_id === currentUser.user_id
+        )
+      );
+    } catch (e) {
+      toast.info("Réservation non existante");
+    }
+  }, [currentUser?.user_id]);
 
+  const deleteReservation = async (reservationId) => {
+    try {
+      await axios.delete(
+        `${import.meta.env.VITE_API_URL}/api/reservation/${reservationId}`
+      );
+      fetchReservation();
+      toast.success("Réservation supprimée avec succès.");
+    } catch (error) {
+      toast.error("Erreur lors de la suppression de la reservation.");
+    }
+  };
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
       if (!currentUser) {
@@ -83,7 +95,7 @@ export default function UserProfilePage() {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [currentUser, navigate]);
+  }, [currentUser, navigate, fetchReservation]);
 
   if (loading) {
     return <LoadingComponent />;
@@ -119,22 +131,22 @@ export default function UserProfilePage() {
         Se déconnecter
       </button>
 
-      <div className="flex items-center md:mt-16 md:flex-row md:justify-around md:flex flex-col pb-36">
+      <div className="flex  md:mt-16 md:flex-row md:justify-around md:flex flex-col pb-36">
         <div className="flex flex-col gap-4 p-8 items-center">
           <h1 className="text-white md:text-2xl">Votre véhicule :</h1>
           <div className="flex flex-col md:flex-row justify-end text-white bg-Componentbg rounded-lg p-4">
-            <img src={userInfo?.image} alt="" className="w-26 h-20" />
-            <div>
-              <p>
-                <strong>Marque</strong> : {userInfo?.brand}
-              </p>
-              <p>
-                <strong>Model</strong> : {userInfo?.model}
-              </p>
-              <p>
-                <strong>Type de prise</strong> : {userInfo?.socket_type}
-              </p>
-            </div>
+            <img
+              src={userInfo?.image}
+              alt=""
+              className="w-26 h-20 object-contain"
+            />
+            <ul>
+              <li className="font-bold">Marque : {userInfo?.brand}</li>
+              <li className="font-bold">Model : {userInfo?.model}</li>
+              <li className="font-bold">
+                Type de prise : {userInfo?.socket_type}
+              </li>
+            </ul>
             {/* */}
           </div>
           <Link
@@ -150,31 +162,35 @@ export default function UserProfilePage() {
           {reservations.length > 0 ? (
             reservations.map((reservation) => (
               <div
-                className="flex justify-center text-white bg-Componentbg rounded-lg p-4 gap-4 items-center max-w-64 "
+                className="flex justify-center text-white bg-Componentbg rounded-lg p-4 gap-4 items-center max-w-64 md:max-w-96"
                 key={reservation.reservation_id}
               >
-                <div className="flex flex-col">
-                  <p>
-                    <strong> Nom de station : </strong>
-                    {reservation.name}
-                  </p>
-                  <p>
-                    <strong> Date de début : </strong>
+                <ul className="flex flex-col">
+                  <li>Nom de station :{reservation.name}</li>
+                  <li>
+                    Date de début :
                     {new Date(reservation.start_at).toLocaleString()}
-                  </p>
-                  <p>
-                    <strong>Date de fin : </strong>
-                    {new Date(reservation.end_at).toLocaleString()}
-                  </p>
-                  <p>
-                    <strong>Status : </strong>
-                    {reservation.status}{" "}
-                  </p>
-                  <p>
-                    <strong>Prix : </strong>
-                    {reservation.price} €{" "}
-                  </p>
-                </div>
+                  </li>
+                  <li>
+                    Date de fin :{new Date(reservation.end_at).toLocaleString()}
+                  </li>
+                  <li>Status :{reservation.status} </li>
+                  <li>Prix :{reservation.price} € </li>
+                  <li className="pt-2">
+                    <button
+                      aria-label="Supprimer une réservation"
+                      type="button"
+                      onClick={() =>
+                        deleteReservation(reservation.reservation_id)
+                      }
+                    >
+                      <CircleX
+                        color="red"
+                        className="hover:bg-red-300 hover:rounded-full"
+                      />
+                    </button>
+                  </li>
+                </ul>
               </div>
             ))
           ) : (
