@@ -32,10 +32,10 @@ function SideBar() {
           <ul className="text-center gap-4">
             <li className="flex items-center space-x-2 py-2">
               <Link
-                to="/admin/cars"
-                className="w-full rounded-lg border border-white py-2 px-4 hover:border-black hover:text-black"
+                to="/admin"
+                className="w-full rounded-lg border border-white py-2 px-4  hover:border-black hover:text-black"
               >
-                Voitures
+                Informations
               </Link>
             </li>
             <li className="flex items-center space-x-2 py-2">
@@ -48,18 +48,18 @@ function SideBar() {
             </li>
             <li className="flex items-center space-x-2 py-2">
               <Link
-                to="/admin"
-                className="w-full rounded-lg border border-white py-2 px-4  hover:border-black hover:text-black"
-              >
-                Informations
-              </Link>
-            </li>
-            <li className="flex items-center space-x-2 py-2">
-              <Link
                 to="/admin/stations"
                 className="w-full rounded-lg border border-white py-2 px-4  hover:border-black hover:text-black"
               >
                 Stations
+              </Link>
+            </li>
+            <li className="flex items-center space-x-2 py-2">
+              <Link
+                to="/admin/cars"
+                className="w-full rounded-lg border border-white py-2 px-4 hover:border-black hover:text-black"
+              >
+                Voitures
               </Link>
             </li>
             <li className="flex items-center space-x-2 py-2">

@@ -19,11 +19,9 @@ function RegisteredUsers() {
     }
   };
 
-  const deleteUsers = async (usersId) => {
+  const deleteUser = async (userId) => {
     try {
-      await axios.delete(
-        `${import.meta.env.VITE_API_URL}/api/users/${usersId}`
-      );
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/users/${userId}`);
       fetchUsers();
       toast.success("Utilisateur supprimé avec succès.");
     } catch (error) {
@@ -61,7 +59,7 @@ function RegisteredUsers() {
                       aria-label="Supprimer un utilisateur"
                       type="button"
                       className="hover:bg-red-200 rounded-sm"
-                      onClick={() => deleteUsers(user.user_id)}
+                      onClick={() => deleteUser(user.user_id)}
                     >
                       <SquareX color="red" />
                     </button>
