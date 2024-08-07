@@ -39,18 +39,15 @@ export default function UploadComponent() {
         toast.update(toastId, {
           render: "Le fichier a bien été téléversé",
           type: toast.TYPE.SUCCESS,
-          autoClose: 5000,
         });
       } catch (error) {
         toast.update(toastId, {
           render: "Erreur lors du téléversement du fichier",
           type: toast.TYPE.ERROR,
-          autoClose: 5000,
         });
       } finally {
         toast.dismiss(toastId);
         setLoading(false);
-        toast.dismiss();
         toast.success("Fichier téléchargé avec succès !");
       }
     }, 25000);
