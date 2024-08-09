@@ -1,12 +1,28 @@
 import { useState, useEffect } from "react";
 import { SquareX, Trash2 } from "lucide-react";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import SideBar from "./SideBar";
 import NavbarDesktop from "../NavbarDesktop";
+import LoadingComponent from "../map/LoadingComponent";
 
 function RegisteredUsers() {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { currentUser } = useOutletContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+      if (currentUser?.role !== "Admin") {
+        navigate("/map");
+      }
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, [currentUser, navigate]);
 
   const fetchUsers = async () => {
     try {
@@ -32,6 +48,10 @@ function RegisteredUsers() {
   useEffect(() => {
     fetchUsers();
   }, []);
+
+  if (loading) {
+    return <LoadingComponent />;
+  }
 
   return (
     <>
