@@ -140,7 +140,7 @@ export default function ReservationPage() {
   return (
     <>
       <Navbar />
-      <main className="bg-bg-geocode min-h-screen flex items-center justify-center text-white pb-40">
+      <main className="bg-bg-geocode min-h-screen flex justify-center text-white pb-40">
         <section className="bg-gray-800 lg:py-12 lg:flex lg:justify-center rounded-xl p-6">
           <div className="lg:rounded-xl w-full sm:max-w-sm">
             <img
@@ -149,7 +149,7 @@ export default function ReservationPage() {
               alt="borne de recharge"
             />
           </div>
-          <div className="m-4 flex flex-col justify-center">
+          <div className="mx-auto md:m-4 flex flex-col justify-center max-w-64">
             {name && (
               <div className="mb-6">
                 <h2 className="text-center text-xl text-white p-4">{name}</h2>

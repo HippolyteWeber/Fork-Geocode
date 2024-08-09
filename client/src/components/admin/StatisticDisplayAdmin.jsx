@@ -103,7 +103,7 @@ export default function StatisticDisplayAdmin() {
             style={{ width: "200px", height: "200px" }}
           >
             <span className="text-lg font-bold">Total de stations</span>
-            <p className="text-2xl mt-2">
+            <p className="text-2xl">
               <AnimatedNumber value={totalStations} />
             </p>
             <UploadComponent />
