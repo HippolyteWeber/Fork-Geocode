@@ -20,7 +20,7 @@ function Stations() {
       if (currentUser?.role !== "Admin") {
         navigate("/map");
       }
-    }, 50);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, [currentUser, navigate]);
@@ -28,7 +28,10 @@ function Stations() {
   const fetchStations = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/station`
+        `${import.meta.env.VITE_API_URL}/api/station`,
+        {
+          withCredentials: true,
+        }
       );
       setStations(response.data);
     } catch (error) {

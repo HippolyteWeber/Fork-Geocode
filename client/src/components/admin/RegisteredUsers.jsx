@@ -19,7 +19,7 @@ function RegisteredUsers() {
       if (currentUser?.role !== "Admin") {
         navigate("/map");
       }
-    }, 50);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, [currentUser, navigate]);
@@ -27,7 +27,10 @@ function RegisteredUsers() {
   const fetchUsers = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/users`
+        `${import.meta.env.VITE_API_URL}/api/users`,
+        {
+          withCredentials: true,
+        }
       );
       setUsers(response.data);
     } catch (error) {
@@ -37,7 +40,12 @@ function RegisteredUsers() {
 
   const deleteUser = async (userId) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/users/${userId}`);
+      await axios.delete(
+        `${import.meta.env.VITE_API_URL}/api/users/${userId}`,
+        {
+          withCredentials: true,
+        }
+      );
       fetchUsers();
       toast.success("Utilisateur supprimé avec succès.");
     } catch (error) {

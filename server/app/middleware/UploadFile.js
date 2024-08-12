@@ -1,7 +1,8 @@
 const multer = require("multer");
 const fs = require("fs").promises;
+const path = require("path");
 
-const upload = multer({ dest: "../../public/uploads" });
+const upload = multer({ dest: path.join(__dirname, "../../public/uploads") });
 
 const UploadFile = async (req, res, next) => {
   try {
@@ -14,15 +15,19 @@ const UploadFile = async (req, res, next) => {
       });
     });
 
-    await fs.rename(
-      `../../public/uploads/${req.file.filename}`,
-      `../../public/uploads/bornes-irve.csv`,
-      (error) => {
-        if (error) throw error;
-        res.status(201).json({ message: "Le fichier a bien été téléversé" });
-      }
+    const oldPath = path.join(
+      __dirname,
+      "../../public/uploads",
+      req.file.filename
+    );
+    const newPath = path.join(
+      __dirname,
+      "../../public/uploads/bornes-irve.csv"
     );
 
+    await fs.rename(oldPath, newPath);
+
+    res.status(201).json({ message: "Le fichier a bien été téléversé" });
     next();
   } catch (error) {
     next(error);

@@ -6,11 +6,6 @@ const router = express.Router();
 // Import And Use Routers Here
 /* ************************************************************************* */
 
-const UploadFile = require("../../middleware/UploadFile");
-const InsertFile = require("../../middleware/InsertFile");
-
-router.post("/upload", UploadFile, InsertFile);
-
 const carRouter = require("./car/router");
 
 router.use("/car", carRouter);
