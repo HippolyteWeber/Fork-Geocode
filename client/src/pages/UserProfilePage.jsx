@@ -92,7 +92,7 @@ export default function UserProfilePage() {
         fetchUserData(currentUser.user_id);
         fetchReservation();
       }
-    }, 1000);
+    }, 300);
 
     return () => clearTimeout(timer);
   }, [currentUser, navigate, fetchReservation]);

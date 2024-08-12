@@ -149,7 +149,7 @@ export default function ReservationPage() {
               alt="borne de recharge"
             />
           </div>
-          <div className="m-4 flex flex-col justify-center">
+          <div className="md:m-4 mx-auto flex flex-col justify-center max-w-64">
             {name && (
               <div className="mb-6">
                 <h2 className="text-center text-xl text-white p-4">{name}</h2>

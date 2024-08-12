@@ -11,7 +11,7 @@ export default function LocationMarker() {
   useEffect(() => {
     const locateControl = L.control
       .locate({
-        position: "topleft",
+        position: "topright",
         showPopup: false,
         flyTo: true,
         initialZoomLevel: 13,
