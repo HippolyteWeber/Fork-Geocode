@@ -25,20 +25,20 @@ const checkExistingUser = require("../../../middleware/CheckExistingUser");
 
 const validateUserUpdate = require("../../../middleware/ValidateUserUpdate");
 
-// Route to add a new user
+const adminWall = require("../../../middleware/AdminWall");
+
 router.post("/", validateUserSchema, checkExistingUser, hashPassword, create);
-// Route to get a list of users
-router.get("/", readAll);
-// Route to get a specific user by ID
+
 router.get("/:id", readOneById);
-// Route to update only the carId of the user
+
 router.put("/", updateCar);
-// Route to update a specific user by ID
-router.put("/:id", validateUserSchema, hashPassword, update);
-// Route to update for User by ID
+
 router.put("/update/:id", validateUserUpdate, updateUser);
-// Route to delete a specific user by ID
+
+router.use(adminWall);
+router.get("/", readAll);
 router.delete("/:id", destroy);
+router.put("/:id", validateUserSchema, hashPassword, update);
 /* ************************************************************************* */
 
 module.exports = router;

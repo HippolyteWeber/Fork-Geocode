@@ -47,6 +47,7 @@ const InsertFile = async (req, res, next) => {
           .send(
             "Les données des stations ont été insérées avec succès dans la base de données."
           );
+        next();
       } catch (error) {
         next(error);
       }

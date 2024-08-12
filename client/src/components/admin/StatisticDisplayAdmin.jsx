@@ -35,7 +35,10 @@ export default function StatisticDisplayAdmin() {
   const fetchTotalUsers = async () => {
     try {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/users/`
+        `${import.meta.env.VITE_API_URL}/api/users/`,
+        {
+          withCredentials: true,
+        }
       );
       setTotalUsers(data.length);
     } catch (error) {
@@ -46,7 +49,10 @@ export default function StatisticDisplayAdmin() {
   const fetchTotalStations = async () => {
     try {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/station/`
+        `${import.meta.env.VITE_API_URL}/api/station/`,
+        {
+          withCredentials: true,
+        }
       );
       setTotalStations(data.length);
     } catch (error) {

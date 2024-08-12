@@ -27,9 +27,10 @@ export default function UploadComponent() {
         formData.append("station", file);
 
         await axios.post(
-          `${import.meta.env.VITE_API_URL}/api/upload`,
+          `${import.meta.env.VITE_API_URL}/api/station/upload`,
           formData,
           {
+            withCredentials: true,
             headers: {
               "Content-Type": "multipart/form-data",
             },
@@ -55,10 +56,16 @@ export default function UploadComponent() {
 
   const handleTruncate = async () => {
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/station/truncate`);
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/station/truncate`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
       toast.success("Table station vidée avec succès !");
     } catch (error) {
-      toast.error("Erreur lors de la suppression de la table station", {});
+      toast.error("Erreur lors de la suppression de la table station");
     }
   };
 

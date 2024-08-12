@@ -15,13 +15,18 @@ const {
   destroy,
   truncateStationTable,
 } = require("../../../controllers/stationActions");
+const UploadFile = require("../../../middleware/UploadFile");
+const InsertFile = require("../../../middleware/InsertFile");
+const adminWall = require("../../../middleware/AdminWall");
 
+router.use(adminWall);
 router.post("/", create);
 router.get("/", readAll);
 router.get("/:id", readOneById);
 router.put("/:id", update);
 router.delete("/:id", destroy);
 router.post("/truncate", truncateStationTable);
+router.post("/upload", UploadFile, InsertFile);
 
 /* ************************************************************************* */
 

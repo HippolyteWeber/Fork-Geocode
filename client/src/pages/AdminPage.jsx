@@ -16,7 +16,7 @@ function AdminPage() {
       if (currentUser?.role !== "Admin") {
         navigate("/map");
       }
-    }, 200);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, [currentUser, navigate]);
