@@ -175,7 +175,7 @@ export default function UserProfilePage() {
                     Date de fin :{new Date(reservation.end_at).toLocaleString()}
                   </li>
                   <li>Status :{reservation.status} </li>
-                  <li>Prix :{reservation.price} € </li>
+                  <li>Estimation du prix :{reservation.price} € </li>
                   <li className="pt-2">
                     <button
                       aria-label="Supprimer une réservation"

@@ -6,7 +6,7 @@ class CarRepository extends AbstractRepository {
   }
 
   async create(car) {
-    const { brand, model, image, socketType } = car;
+    const { brand, model, socketType, image } = car;
     const [result] = await this.database.query(
       `INSERT INTO ${this.table} (
       brand,
@@ -14,7 +14,7 @@ class CarRepository extends AbstractRepository {
       socket_type,
       image)
       VALUES (?, ?, ?, ?)`,
-      [brand, model, image, socketType]
+      [brand, model, socketType, image]
     );
     return result.insertId;
   }
