@@ -5,51 +5,56 @@ export default function LegaleNoticePage() {
     <>
       <Navbar />
       <ul className=" bg-bg-geocode text-white py-12 px-4 md:px-40 pb-32 ">
-        <h1 className="text-4xl pb-4"> Conditions Générales d'Utilisation</h1>
-        <li className="text-2xl pb-4">
+        <h1 className="text-4xl pb-4 font-main">
+          {" "}
+          Conditions Générales d'Utilisation
+        </h1>
+        <li className="text-2xl pb-4 font-paraph">
           En accédant et en utilisant le site Geocode, vous acceptez de
           respecter les conditions générales d'utilisation suivantes :
         </li>
-        <h3 className="text-2xl pb-4">Objet</h3>
-        <li className="pb-4">
+        <h3 className="text-2xl pb-4 font-main">Objet</h3>
+        <li className="pb-4 font-paraph">
           Le site Geocode fournit un service de localisation des bornes de
           recharge pour véhicules électriques basé sur les données publiques du
           fichier IRVE de data.gouv.
         </li>
-        <h3 className="text-2xl pb-4">Accès au Service</h3>
-        <li className="pb-4">
+        <h3 className="text-2xl pb-4 font-main">Accès au Service</h3>
+        <li className="pb-4 font-paraph">
           L'accès au site et à ses services est libre. Toutefois, l'utilisation
           de certaines fonctionnalités nécessite la création d'un compte
           utilisateur.
         </li>
-        <h3 className="text-2xl pb-4">Responsabilité</h3>
-        <li className="pb-4">
+        <h3 className="text-2xl pb-4 font-main">Responsabilité</h3>
+        <li className="pb-4 font-paraph">
           Geocode ne saurait être tenu responsable des erreurs ou omissions dans
           les données fournies par le site. Les informations disponibles sont à
           titre indicatif et peuvent être modifiées sans préavis.
         </li>
-        <h3 className="text-2xl pb-4">Propriété Intellectuelle</h3>
-        <li className="pb-4">
+        <h3 className="text-2xl pb-4 font-main">Propriété Intellectuelle</h3>
+        <li className="pb-4 font-paraph">
           Le contenu du site Geocode, y compris les textes, graphiques, logos,
           et autres éléments, est la propriété exclusive de Geocode ou de ses
           partenaires. Toute reproduction ou utilisation sans autorisation est
           interdite.
         </li>
-        <h3 className="text-2xl pb-4"> Liens Externes</h3>
-        <li className="pb-4">
+        <h3 className="text-2xl pb-4 font-main"> Liens Externes</h3>
+        <li className="pb-4 font-paraph">
           Le site peut contenir des liens vers des sites externes. Geocode ne
           saurait être tenu responsable du contenu de ces sites ou de leurs
           pratiques en matière de confidentialité.
         </li>
-        <h3 className="text-2xl pb-4">Modification des Conditions</h3>
-        <li className="pb-4">
+        <h3 className="text-2xl pb-4 font-main">Modification des Conditions</h3>
+        <li className="pb-4 font-paraph">
           Geocode se réserve le droit de modifier les conditions générales
           d'utilisation à tout moment. Les modifications seront publiées sur
           cette page.
         </li>
-        <h2 className="text-3xl pb-4">Politique de Confidentialité (RGPD)</h2>
-        <h3 className="text-2xl pb-4"> 1. Données Collectées</h3>
-        <li className="pb-4">
+        <h2 className="text-3xl pb-4 font-main">
+          Politique de Confidentialité (RGPD)
+        </h2>
+        <h3 className="text-2xl pb-4 font-main"> 1. Données Collectées</h3>
+        <li className="pb-4 font-paraph">
           Lors de votre utilisation du site Geocode, nous pouvons collecter les
           données suivantes : Données d'identification : nom, prénom, adresse
           e-mail, mot de passe (haché). Données de géolocalisation :
@@ -58,16 +63,18 @@ export default function LegaleNoticePage() {
           sélectionné par l'utilisateur. Données de navigation : adresse IP,
           type de navigateur, pages visitées.
         </li>
-        <h3 className="text-2xl pb-4"> 2. Finalités du Traitement</h3>
-        <li className="pb-4">
+        <h3 className="text-2xl pb-4 font-main"> 2. Finalités du Traitement</h3>
+        <li className="pb-4 font-paraph">
           Les données collectées sont utilisées pour : Créer et gérer votre
           compte utilisateur. Fournir les services de localisation des bornes de
           recharge. Améliorer notre site et nos services en fonction de vos
           préférences. Vous envoyer des informations pertinentes concernant
           notre service (newsletters, mises à jour).
         </li>
-        <h3 className="text-2xl pb-4">3. Base Légale du Traitement</h3>
-        <li className="pb-4">
+        <h3 className="text-2xl pb-4 font-main">
+          3. Base Légale du Traitement
+        </h3>
+        <li className="pb-4 font-paraph">
           Le traitement de vos données personnelles est fondé sur les bases
           légales suivantes : Consentement : Vous avez consenti à la collecte et
           au traitement de vos données lors de la création de votre compte ou de
@@ -76,20 +83,20 @@ export default function LegaleNoticePage() {
           demandés. Obligations légales : Le traitement est nécessaire pour
           respecter des obligations légales auxquelles nous sommes soumis.
         </li>
-        <h3 className="text-2xl pb-4">4. Durée de Conservation</h3>
-        <li className="pb-4">
+        <h3 className="text-2xl pb-4 font-main">4. Durée de Conservation</h3>
+        <li className="pb-4 font-paraph">
           Les données personnelles sont conservées pendant la durée nécessaire à
           la réalisation des finalités pour lesquelles elles ont été collectées,
           et ce, conformément aux exigences légales applicables.
         </li>
-        <h3 className="text-2xl pb-4">5. Sécurité des Données</h3>
-        <li className="pb-4">
+        <h3 className="text-2xl pb-4 font-main">5. Sécurité des Données</h3>
+        <li className="pb-4 font-paraph">
           Nous mettons en œuvre des mesures techniques et organisationnelles
           appropriées pour garantir la sécurité de vos données personnelles et
           prévenir toute perte, détérioration ou accès non autorisé.
         </li>
-        <h3 className="text-2xl pb-4"> 6. Droits des Utilisateurs</h3>
-        <li className="pb-4">
+        <h3 className="text-2xl pb-4 font-main"> 6. Droits des Utilisateurs</h3>
+        <li className="pb-4 font-paraph">
           Conformément au Règlement Général sur la Protection des Données
           (RGPD), vous disposez des droits suivants : Droit d'accès : Vous
           pouvez demander une copie des données personnelles que nous détenons
@@ -104,16 +111,16 @@ export default function LegaleNoticePage() {
           pour des motifs légitimes. Pour exercer vos droits, veuillez nous
           contacter à l'adresse suivante : contact@geocode.example.
         </li>
-        <h3 className="text-2xl pb-4">7. Cookies</h3>
-        <li className="pb-4">
+        <h3 className="text-2xl pb-4 font-main">7. Cookies</h3>
+        <li className="pb-4 font-paraph">
           Le site Geocode utilise des cookies pour améliorer votre expérience
           utilisateur. Vous pouvez gérer vos préférences en matière de cookies
           via les paramètres de votre navigateur.
         </li>
-        <h3 className="text-2xl pb-4">
+        <h3 className="text-2xl pb-4 font-main">
           8. Modifications de la Politique de Confidentialité
         </h3>
-        <li className="pb-4">
+        <li className="pb-4 font-paraph">
           Cette politique de confidentialité peut être mise à jour. Les
           modifications seront publiées sur cette page. Nous vous encourageons à
           consulter régulièrement cette politique pour être informé de tout

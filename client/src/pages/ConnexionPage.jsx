@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { toast } from "react-toastify";
 import logo from "../assets/images/Logo.png";
 
@@ -105,12 +105,21 @@ export default function ConnexionPage() {
               </span>
             )}
           </label>
-          <p className="text-white my-12 text-center">
-            Si vous ne possédez pas de compte cliquez
-            <a href="/register" className="text-GreenComp">
-              <span> ici</span>
-            </a>
-          </p>
+          <ul>
+            <li className="text-white mt-10 text-center">
+              Si vous ne possédez pas de compte cliquez
+              <Link to="/register" className="text-GreenComp px-2">
+                ici
+              </Link>
+            </li>
+            <li className="text-white my-6 text-center">
+              Ou bien accèdez au site en tant qu'invité
+              <Link to="/map" className="text-GreenComp px-2">
+                {" "}
+                ici
+              </Link>
+            </li>
+          </ul>
           <div className="border-solid border-GreyComp">
             <button
               type="submit"

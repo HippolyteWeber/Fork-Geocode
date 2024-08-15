@@ -21,7 +21,8 @@ export default function UserProfilePage() {
   const fetchUserData = async (userId) => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/users/${userId}`
+        `${import.meta.env.VITE_API_URL}/api/users/${userId}`,
+        { withCredentials: true }
       );
       setUserInfo(response.data);
     } catch (e) {
@@ -37,7 +38,8 @@ export default function UserProfilePage() {
           firstName: userInfo.first_name,
           lastName: userInfo.last_name,
           email: userInfo.email,
-        }
+        },
+        { withCredentials: true }
       );
       if (response.status === 204) {
         toast.success("Vos informations ont été mises à jour");
@@ -55,6 +57,9 @@ export default function UserProfilePage() {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/reservation/`,
         {
+          withCredentials: true,
+        },
+        {
           params: { userId: currentUser.user_id },
         }
       );
@@ -71,7 +76,10 @@ export default function UserProfilePage() {
   const deleteReservation = async (reservationId) => {
     try {
       await axios.delete(
-        `${import.meta.env.VITE_API_URL}/api/reservation/${reservationId}`
+        `${import.meta.env.VITE_API_URL}/api/reservation/${reservationId}`,
+        {
+          withCredentials: true,
+        }
       );
       fetchReservation();
       toast.success("Réservation supprimée avec succès.");
@@ -134,7 +142,7 @@ export default function UserProfilePage() {
       <div className="flex  md:mt-16 md:flex-row md:justify-around md:flex flex-col pb-36">
         <div className="flex flex-col gap-4 p-8 items-center">
           <h1 className="text-white md:text-2xl">Votre véhicule :</h1>
-          <div className="flex flex-col md:flex-row justify-end text-white bg-Componentbg rounded-lg p-4">
+          <div className="flex flex-col md:flex-row justify-end text-white bg-Componentbg rounded-lg min-w-72 p-4">
             <img
               src={userInfo?.image}
               alt=""
@@ -162,7 +170,7 @@ export default function UserProfilePage() {
           {reservations.length > 0 ? (
             reservations.map((reservation) => (
               <div
-                className="flex justify-center text-white bg-Componentbg rounded-lg p-4 gap-4 items-center max-w-64 md:max-w-96"
+                className="flex justify-center text-white bg-Componentbg rounded-lg p-4 gap-4 items-center max-w-72  md:min-w-96"
                 key={reservation.reservation_id}
               >
                 <ul className="flex flex-col">

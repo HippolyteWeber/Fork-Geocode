@@ -18,6 +18,9 @@ const {
 
 const validateReservationSchema = require("../../../middleware/ValidateReservationSchema");
 
+const userWall = require("../../../middleware/UserWall");
+
+router.use(userWall);
 // Route to check if a reservation conflicts
 router.get("/check", checkReservation);
 // Route to add a new user

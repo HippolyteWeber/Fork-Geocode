@@ -42,7 +42,10 @@ function Stations() {
   const deleteStation = async (stationId) => {
     try {
       await axios.delete(
-        `${import.meta.env.VITE_API_URL}/api/station/${stationId}`
+        `${import.meta.env.VITE_API_URL}/api/station/${stationId}`,
+        {
+          withCredentials: true,
+        }
       );
       fetchStations();
       toast.success("Station supprimée avec succès.");

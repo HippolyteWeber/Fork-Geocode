@@ -32,9 +32,9 @@ CREATE TABLE users (
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     role_id INT UNSIGNED,
-    FOREIGN KEY (role_id) REFERENCES role (role_id),
+    FOREIGN KEY (role_id) REFERENCES role (role_id) ON DELETE SET NULL,
     car_type_id INT UNSIGNED,
-    FOREIGN KEY (car_type_id) REFERENCES car_type (car_type_id)
+    FOREIGN KEY (car_type_id) REFERENCES car_type (car_type_id) ON DELETE SET NULL
 );
 
 CREATE TABLE reservation (

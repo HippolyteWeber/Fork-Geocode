@@ -29,6 +29,9 @@ export default function ReservationPage() {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/reservation`,
         {
+          withCredentials: true,
+        },
+        {
           params: { stationId: station },
         }
       );
@@ -46,6 +49,9 @@ export default function ReservationPage() {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/reservation/check`,
+        {
+          withCredentials: true,
+        },
         {
           params: { stationId, startAt, endAt },
         }
@@ -96,14 +102,20 @@ export default function ReservationPage() {
         toast.error("Ce créneau horaire est déjà réservé !");
       } else {
         const price = calculatePrice(data.startAt, data.endAt, power);
-        await axios.post(`${import.meta.env.VITE_API_URL}/api/reservation`, {
-          status: "Réservé",
-          price,
-          startAt: data.startAt,
-          endAt: data.endAt,
-          userId: currentUser?.user_id,
-          stationId: station,
-        });
+        await axios.post(
+          `${import.meta.env.VITE_API_URL}/api/reservation`,
+          {
+            status: "Réservé",
+            price,
+            startAt: data.startAt,
+            endAt: data.endAt,
+            userId: currentUser?.user_id,
+            stationId: station,
+          },
+          {
+            withCredentials: true,
+          }
+        );
         toast.success("Votre réservation est prise en compte !");
         fetchReservations();
       }
