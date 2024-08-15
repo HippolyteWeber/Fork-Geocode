@@ -9,7 +9,7 @@ const login = async (req, res) => {
   const [user] = await tables.users.findUserByEmail(email);
 
   if (!user) {
-    return res.status(404).json({
+    return res.status(401).json({
       message: "Le couple email/mot de passe est incorrect",
     });
   }
@@ -17,7 +17,7 @@ const login = async (req, res) => {
   const isAllowed = await argon2.verify(user.password, password);
 
   if (!isAllowed) {
-    return res.status(404).json({
+    return res.status(401).json({
       message: "Le couple email/mot de passe est incorrect",
     });
   }

@@ -27,13 +27,15 @@ const validateUserUpdate = require("../../../middleware/ValidateUserUpdate");
 
 const adminWall = require("../../../middleware/AdminWall");
 
+const userWall = require("../../../middleware/UserWall");
+
 router.post("/", validateUserSchema, checkExistingUser, hashPassword, create);
 
-router.get("/:id", readOneById);
+router.get("/:id", userWall, readOneById);
 
-router.put("/", updateCar);
+router.put("/", userWall, updateCar);
 
-router.put("/update/:id", validateUserUpdate, updateUser);
+router.put("/update/:id", userWall, validateUserUpdate, updateUser);
 
 router.use(adminWall);
 router.get("/", readAll);

@@ -10,10 +10,13 @@ const {
   destroy,
 } = require("../../../controllers/roleActions");
 
+const adminWall = require("../../../middleware/AdminWall");
+
 router.get("/", readAll);
 
 router.get("/:id", readOneById);
 
+router.use(adminWall);
 router.post("/", create);
 
 router.put("/:id", update);
