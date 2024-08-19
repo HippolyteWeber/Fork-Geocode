@@ -2,11 +2,6 @@ const express = require("express");
 
 const router = express.Router();
 
-/* ************************************************************************* */
-// Define Your API Routes Here
-/* ************************************************************************* */
-
-// Import item-related actions
 const {
   create,
   readAll,
@@ -41,6 +36,5 @@ router.use(adminWall);
 router.get("/", readAll);
 router.delete("/:id", destroy);
 router.put("/:id", validateUserSchema, hashPassword, update);
-/* ************************************************************************* */
 
 module.exports = router;

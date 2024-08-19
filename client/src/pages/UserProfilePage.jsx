@@ -10,11 +10,11 @@ import Navbar from "../components/Navbar";
 import Modal from "../components/updateUserModal";
 
 export default function UserProfilePage() {
-  const [userInfo, setUserInfo] = useState({});
-  const { currentUser, setCurrentUser } = useOutletContext();
   const [loading, setLoading] = useState(true);
   const [reservations, setReservations] = useState([]);
   const navigate = useNavigate();
+  const { currentUser, setCurrentUser } = useOutletContext();
+  const [userInfo, setUserInfo] = useState({});
 
   const [showModal, setShowModal] = useState(false);
 

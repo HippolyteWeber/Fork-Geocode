@@ -20,13 +20,16 @@ const validateReservationSchema = require("../../../middleware/ValidateReservati
 
 const userWall = require("../../../middleware/UserWall");
 
+const adminWall = require("../../../middleware/AdminWall");
+
+router.get("/", adminWall, readAll);
+
 router.use(userWall);
 // Route to check if a reservation conflicts
 router.get("/check", checkReservation);
 // Route to add a new user
 router.post("/", validateReservationSchema, create);
 // Route to get a list of users
-router.get("/", readAll);
 // Route to get a specific user by ID
 router.get("/:id", readOneById);
 // Route to update a specific user by ID
