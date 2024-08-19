@@ -13,7 +13,10 @@ export default function StatisticDisplayAdmin() {
   const fetchTotalReservations = async () => {
     try {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/reservation/`
+        `${import.meta.env.VITE_API_URL}/api/reservation/`,
+        {
+          withCredentials: true,
+        }
       );
       setTotalReservations(data.length);
     } catch (error) {

@@ -8,6 +8,7 @@ import logo from "../assets/images/Logo.png";
 
 export default function ConnexionPage() {
   const { currentUser, setCurrentUser } = useOutletContext();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,6 +19,7 @@ export default function ConnexionPage() {
       navigate("/admin");
     }
   }, [currentUser, navigate]);
+
   const {
     register,
     handleSubmit,
@@ -38,6 +40,7 @@ export default function ConnexionPage() {
         }
       );
       setCurrentUser(response.data.user);
+      toast.success("Connexion réussie");
     } catch (e) {
       if (e.response && e.response.data && e.response.data.message) {
         toast.error(e.response.data.message);
